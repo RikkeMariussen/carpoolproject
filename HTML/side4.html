@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>ForsideCarpool</title>
+    <link rel="stylesheet" href="CSS/style.css"/>
+</head>
+<body>
+<header>
+    <img src="../Images/carpool_topbanner.jpg"/>
+</header>
+
+<div class="choose">
+<form action="side5.html">
+
+    <p> <var id="start"> </var>            <var id="slut"> </var></p>
+    <br>
+    <p> <var id="date"> </var>            <var id="time"> </var></p>
+
+    <script type="application/javascript">
+        const params = new URLSearchParams(window.location.search)
+
+        // iterate over all parameters
+        for (const p of params) {
+            console.log(p)
+            const para = document.createElement("p");
+            if(p[0]=="slut"){
+                const varElement = document.getElementById("slut");
+                varElement.innerText =p[1];
+            }else{
+                para.innerText =p[0]+": "+p[1];
+            }
+            document.body.appendChild(para);
+
+        }
+        // iterate over all parameters
+        for (const p of params) {
+            console.log(p)
+            const para = document.createElement("p");
+            if(p[0]=="start"){
+                const varElement = document.getElementById("start");
+                varElement.innerText =p[1];
+            }else{
+                para.innerText =p[0]+": "+p[1];
+            }
+            document.body.appendChild(para);
+
+        }
+
+        for (const p of params) {
+            console.log(p)
+            const para = document.createElement("p");
+            if(p[0]=="date"){
+                const varElement = document.getElementById("date");
+                varElement.innerText =p[1];
+            }else{
+                para.innerText =p[0]+": "+p[1];
+            }
+            document.body.appendChild(para);
+
+        }
+        for (const p of params) {
+            console.log(p)
+            const para = document.createElement("p");
+            if(p[0]=="time"){
+                const varElement = document.getElementById("time");
+                varElement.innerText =p[1];
+            }else{
+                para.innerText =p[0]+": "+p[1];
+            }
+            document.body.appendChild(para);
+
+        }
+
+    </script>
+
+    <input type="radio" name="from" required value="option1">Mikkel
+    <input type="radio" name="from" required value="option2">Casper<br>
+    <input type="radio" name="back" required value="option1">Rolf
+    <input type="radio" name="back" required value="option2">Franck
+
+<br>
+    <button type="submit">Næste</button>
+</form>
+</div>
+
+<form action="side3.html">
+    <button type="submit">Tilbage</button>
+</form>
+
+</body>
+</html>
