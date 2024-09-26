@@ -14,7 +14,7 @@
 
 </header>
 
-<form action="side3.html">
+<form id="dynamicForm">
     <div class="yikes">
         <input type="radio" name="type" required value="chauffeur">Chauffør
         <input type="radio" name="type" value="passenger">Passager<br/>
@@ -26,6 +26,35 @@
         <button type="submit">Næste</button>
     </div>
 </form>
+
+<script>
+    document.getElementById('dynamicForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+
+        // Get the selected radio values
+        const type = document.querySelector('input[name="type"]:checked').value;
+        const travel = document.querySelector('input[name="travel"]:checked').value;
+
+        // Logic to determine which page to go to
+        let actionURL = '';
+        if (type === 'chauffeur' && travel === 'oneway') {
+            actionURL = 'chauffeur_oneway.html';
+        } else if (type === 'chauffeur' && travel === 'return') {
+            actionURL = 'chauffeur_return.html';
+        } else if (type === 'passenger' && travel === 'oneway') {
+            actionURL = 'passenger_oneway.html';
+        } else if (type === 'passenger' && travel === 'return') {
+            actionURL = 'passenger_return.html';
+        }
+
+        // Set the form's action attribute to the determined URL
+        this.action = actionURL;
+
+        // Now submit the form
+        this.submit();
+    });
+</script>
+
 
 <form action="index.html">
     <button type="submit">Log ud</button>
