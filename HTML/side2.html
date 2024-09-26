@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>ForsideCarpool</title>
-    <link rel="stylesheet" href="CSS/style.css"/>
+    <link rel="stylesheet" href="../CSS/style.css"/>
 </head>
 <body>
 <header>
@@ -15,7 +15,7 @@
 </header>
 
 <form id="dynamicForm">
-    <div class="yikes">
+    <div class="yikes button">
         <input type="radio" name="type" required value="chauffeur">Chauffør
         <input type="radio" name="type" value="passenger">Passager<br/>
 
@@ -44,7 +44,7 @@
         } else if (type === 'passenger' && travel === 'oneway') {
             actionURL = 'passenger_oneway.html';
         } else if (type === 'passenger' && travel === 'return') {
-            actionURL = 'passenger_return.html';
+            actionURL = 'side3.html';
         }
 
         // Set the form's action attribute to the determined URL
