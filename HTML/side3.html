@@ -16,53 +16,55 @@
 
 
 <form action="side4.html">
-    <div class="yikes">
-        <select name="start" id="start" required>
-            <option value="" disabled selected>Start by</option>
-            <option value="Rønne">Rønne</option>
-            <option value="Nexø">Nexø</option>
-            <option value="Gudhjem">Gudhjem</option>
-            <option value="Svaneke">Svaneke</option>
-            <option value="Aakirkeby">Aakirkeby</option>
-            <option value="Allinge">Allinge</option>
-            <option value="Hasle">Hasle</option>
-            <option value="Dueodde">Dueodde</option>
-            <option value="Østerlars">Østerlars</option>
-        </select>
+    <div class="main-box">
+        <div class="sub-box">
+            <select name="start" id="start" required>
+                <option value="" disabled selected>Start by</option>
+                <option value="Rønne">Rønne</option>
+                <option value="Nexø">Nexø</option>
+                <option value="Gudhjem">Gudhjem</option>
+                <option value="Svaneke">Svaneke</option>
+                <option value="Aakirkeby">Aakirkeby</option>
+                <option value="Allinge">Allinge</option>
+                <option value="Hasle">Hasle</option>
+                <option value="Dueodde">Dueodde</option>
+                <option value="Østerlars">Østerlars</option>
+            </select>
 
-        <select name="slut" id="slut" required>
-            <option value="" disabled selected>Slut by</option>
-            <option value="Rønne">Rønne</option>
-            <option value="Nexø">Nexø</option>
-            <option value="Gudhjem">Gudhjem</option>
-            <option value="Svaneke">Svaneke</option>
-            <option value="Aakirkeby">Aakirkeby</option>
-            <option value="Allinge">Allinge</option>
-            <option value="Hasle">Hasle</option>
-            <option value="Dueodde">Dueodde</option>
-            <option value="Østerlars">Østerlars</option>
-        </select>
+            <select name="slut" id="slut" required>
+                <option value="" disabled selected>Slut by</option>
+                <option value="Rønne">Rønne</option>
+                <option value="Nexø">Nexø</option>
+                <option value="Gudhjem">Gudhjem</option>
+                <option value="Svaneke">Svaneke</option>
+                <option value="Aakirkeby">Aakirkeby</option>
+                <option value="Allinge">Allinge</option>
+                <option value="Hasle">Hasle</option>
+                <option value="Dueodde">Dueodde</option>
+                <option value="Østerlars">Østerlars</option>
+            </select>
+        </div>
 
-        <label for="date"></label><br>
-        <input type=date id="date" name="date" required ><br>
+        <div class="sub-box">
+            <label for="date"></label>
+            <input type=date id="date" name="date" required>
 
-        <label for="time"></label><br>
-        <input type=time id="time" name="time" required ><br>
+            <label for="time"></label>
+            <input type=time id="time" name="time" required>
+        </div>
 
-
-        <br/><br/>
+        <div class="button-container">
+            <form action="side2.html">
+                <button type="submit">Tilbage</button>
+            </form>
+            <form action="side4.html">
+                <button type="submit">Næste</button>
+            </form>
+        </div>
 
     </div>
 </form>
 
-<div class="button-container">
-    <form action="side4.html">
-        <button type="submit">Næste</button>
-    </form>
-    <form action="index.html">
-        <button type="submit">Log ud</button>
-    </form>
-</div>
 
 </body>
 </html>

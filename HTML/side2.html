@@ -15,20 +15,39 @@
 </header>
 
 <form id="dynamicForm">
-    <div class="yikes button">
-        <input type="radio" name="type" required value="chauffeur">Chauffør
-        <input type="radio" name="type" value="passenger">Passager<br/>
+    <div class="main-box">
+        <div class="radio-group sub-box">
+            <label>
+                <input type="radio" name="type" required value="chauffeur">Chauffør
+            </label>
+            <label>
+                <input type="radio" name="type" value="passenger">Passager<br/>
+            </label>
+        </div>
 
-        <input type="radio" name="travel" required value="oneway">Enkelt tur
-        <input type="radio" name="travel" required value="return">Tur/Retur<br/>
+        <div class="radio-group sub-box">
+            <label>
+                <input type="radio" name="travel" required value="oneway">Enkelt tur
+            </label>
+            <label>
+                <input type="radio" name="travel" required value="return">Tur/Retur<br/>
+            </label>
+        </div>
 
-        <br/><br/>
-        <button type="submit">Næste</button>
+
+        <div class="button-container">
+            <form action="index.html">
+                <button type="submit">Tilbage</button>
+            </form>
+            <form action="side3.html">
+                <button type="submit">Næste</button>
+            </form>
+        </div>
     </div>
 </form>
 
 <script>
-    document.getElementById('dynamicForm').addEventListener('submit', function(event) {
+    document.getElementById('dynamicForm').addEventListener('submit', function (event) {
         event.preventDefault(); // Prevent the default form submission behavior
 
         // Get the selected radio values
@@ -54,11 +73,6 @@
         this.submit();
     });
 </script>
-
-
-<form action="index.html">
-    <button type="submit">Log ud</button>
-</form>
 
 </body>
 </html>

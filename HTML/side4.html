@@ -11,91 +11,85 @@
     <div class="banner">
         <img src="../Images/carpool_topbanner.jpg"/>
     </div>
-
 </header>
 
 <div class="choose">
-<form action="side5.html">
-
-    <p> <var id="start"> </var>            <var id="slut"> </var></p>
-    <br>
-    <p> <var id="date"> </var>            <var id="time"> </var></p>
-
-    <script type="application/javascript">
-        const params = new URLSearchParams(window.location.search)
-
-        // iterate over all parameters
-        for (const p of params) {
-            console.log(p)
-            const para = document.createElement("p");
-            if(p[0]=="slut"){
-                const varElement = document.getElementById("slut");
-                varElement.innerText =p[1];
-            }else{
-                para.innerText =p[0]+": "+p[1];
-            }
-            document.body.appendChild(para);
-
-        }
-        // iterate over all parameters
-        for (const p of params) {
-            console.log(p)
-            const para = document.createElement("p");
-            if(p[0]=="start"){
-                const varElement = document.getElementById("start");
-                varElement.innerText =p[1];
-            }else{
-                para.innerText =p[0]+": "+p[1];
-            }
-            document.body.appendChild(para);
-
-        }
-
-        for (const p of params) {
-            console.log(p)
-            const para = document.createElement("p");
-            if(p[0]=="date"){
-                const varElement = document.getElementById("date");
-                varElement.innerText =p[1];
-            }else{
-                para.innerText =p[0]+": "+p[1];
-            }
-            document.body.appendChild(para);
-
-        }
-        for (const p of params) {
-            console.log(p)
-            const para = document.createElement("p");
-            if(p[0]=="time"){
-                const varElement = document.getElementById("time");
-                varElement.innerText =p[1];
-            }else{
-                para.innerText =p[0]+": "+p[1];
-            }
-            document.body.appendChild(para);
-
-        }
-
-    </script>
-
-    <input type="radio" name="from" required value="option1">Mikkel
-    <input type="radio" name="from" required value="option2">Casper<br>
-    <input type="radio" name="back" required value="option1">Rolf
-    <input type="radio" name="back" required value="option2">Franck
-
-<br>
-
-</form>
-</div>
-
-<div class="button-container">
     <form action="side5.html">
-        <button type="submit">Næste</button>
-    </form>
-    <form action="index.html">
-        <button type="submit">Log ud</button>
+
+        <!-- Date and Time Inputs -->
+        <div class="main-box">
+            <div class="sub-box">
+                <label for="date"></label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="time"></label>
+                <input type="time" id="time" name="time" required>
+            </div>
+
+            <!-- Group "Frem" and "Tilbage" styled like sub-box -->
+            <div class="group-container">
+                <!-- "Frem" column (left) -->
+                <div class="sub-box group-box">
+                    <h3>Frem</h3>
+                    <div class="grid-item">
+                        <input type="radio" name="from" required value="mikkel">
+                        <img src="../Images/unknownAvatar.png" alt="Mikkel Avatar" class="avatar">
+                        <p><strong>Mikkel</strong><br>By<br>Kl: 8:00</p>
+                    </div>
+
+                    <div class="grid-item">
+                        <input type="radio" name="from" required value="rolf">
+                        <img src="../Images/unknownAvatar.png" alt="Rolf Avatar" class="avatar">
+                        <p><strong>Rolf</strong><br>By<br>Kl: 8:00</p>
+                    </div>
+                </div>
+
+                <!-- "Tilbage" column (right) -->
+                <div class="sub-box group-box">
+                    <h3>Tilbage</h3>
+                    <div class="grid-item">
+                        <input type="radio" name="back" required value="casper">
+                        <img src="../Images/unknownAvatar.png" alt="Casper Avatar" class="avatar">
+                        <p><strong>Casper</strong><br>By<br>Kl: 14:00</p>
+                    </div>
+
+                    <div class="grid-item">
+                        <input type="radio" name="back" required value="franck">
+                        <img src="../Images/unknownAvatar.png" alt="Franck Avatar" class="avatar">
+                        <p><strong>Franck</strong><br>By<br>Kl: 14:00</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Button container for navigation -->
+            <div class="button-container">
+                <form action="side5.html">
+                    <button type="submit">Næste</button>
+                </form>
+                <form action="side3.html">
+                    <button type="submit">Tilbage</button>
+                </form>
+            </div>
+
+        </div>
     </form>
 </div>
+
+<script type="application/javascript">
+    const params = new URLSearchParams(window.location.search);
+
+    // Loop over all parameters and populate corresponding fields
+    for (const p of params) {
+        const key = p[0];
+        const value = p[1];
+
+        if (key === "date") {
+            document.getElementById("date").value = value;
+        } else if (key === "time") {
+            document.getElementById("time").value = value;
+        }
+    }
+</script>
 
 </body>
 </html>

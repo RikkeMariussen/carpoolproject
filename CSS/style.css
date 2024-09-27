@@ -5,15 +5,42 @@
 }
 
 .banner img {
-    width: 100%; /* Make the image responsive by setting its width to 100% of its container */
-    height: auto; /* Maintain the aspect ratio of the image */
-    max-width: 100%; /* Ensure the image doesn’t scale beyond its natural size */
+    width: auto; /* holder delingsforholdet i billedes bredde og højde det samme */
+    height: 250px; /* justering a højde, for at justere hele billedet */
+    object-fit: cover;
 }
 
+body::before { /* Vi indsætter dette før vores andet body tag (under denne kodeblok) */
+    content: "";
+    position: fixed; /* Får elementet til at dække hele skærmen */
+    top: 0; /* hvor vores billede skal starte og slutte */
+    left: 0; /* havde left og right været 100px, så havde 100px på hvert side været "bart" */
+    right: 0;
+    bottom: 0;
+    background-image: url("../Images/Bornholm.jpg"); /* billedet */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2; /* gennemsigtighed */
+    z-index: -1; /* placeret bagers på z-indekset */
+}
+
+body {
+    display: flex;
+    /*justify-content: center; /* Centers items horizontally */
+    align-items: center;     /* Centers items vertically */
+    min-height: 100vh;       /* Ensures body takes up full viewport height */
+    flex-direction: column;  /* Stacks items vertically */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Background color for contrast */
+    margin-bottom: 100px;
+}
 
 .button-container {
     display: flex;
+    justify-content: center;  /* Center the button horizontally */
     gap: 10px;
+
 }
 
 button {
@@ -23,25 +50,162 @@ button {
     padding: 10px 20px;
     font-size: 1.5rem;
     border-radius: 5px;
+
+}
+
+/* Formatering af "form" beholderne */
+.main-box {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background: rgba(161, 221, 255, 0.53);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Grupperings boks inde i main-box */
+.sub-box {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    background: rgba(161, 221, 255, 0.50);
+    padding: 10px 10px 0px 10px;
+    border-radius: 10px;
+    border: 2px solid #0077cc;
+}
+
+/* Formatering af <p> tags inde i "form" beholderne */
+.main-box p {
+    margin-top: 0px;
+    margin-bottom: 5px;
+    max-width: 1000px;
+}
+
+/* Formatering at <input> tags inde i "form" beholderne */
+.main-box input {
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.main-box select {
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.radio-group label {
+    display: inline-flex;
+    margin-bottom: 7px;
+    align-items: center;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+/* Fin justering af text relativt til radio-buttons */
+.radio-group input[type="radio"] {
+    vertical-align: middle;
+    margin-right: 5px;
+    position: relative;
+    top: 3px; /* Fin Justeres her!!!! */
+}
+
+/* Gruppering af radio Buttons */
+.main-box .radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+
+/* Formatering af radiobutton labels */
+.main-box .radio-group label {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    white-space: nowrap;
 }
 
 button:hover {
     background-color: #369d95;
 }
 
-
-body {
-    display: flex;
-    justify-content: center; /* Centers items horizontally */
-    align-items: center;     /* Centers items vertically */
-    min-height: 100vh;       /* Ensures body takes up full viewport height */
-    flex-direction: column;  /* Stacks items vertically */
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9; /* Background color for contrast */
-}
-
 .yikes {
     text-align: center; /* Center text within each form */
     margin-bottom: 20px; /* Adds space between forms */
+}
+
+
+/****************** CSS til side4!!! ******************/
+
+/* Styling for avatar images */
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
+
+/* Grid styling for the availability section */
+.availability-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 20px; /* Space between items */
+    margin-top: 20px;
+}
+
+/* Group container that holds "Frem" and "Tilbage" */
+.group-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Reusing the sub-box class */
+.group-box {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    background: rgba(161, 221, 255, 0.50); /* Blue background for sub-box */
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #0077cc;
+}
+
+/* Styling for headers in group-box (Frem and Tilbage) */
+.group-box h3 {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+/* Grid item inside each group */
+.grid-item {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    white-space: nowrap; /* Prevents text from wrapping */
+}
+
+/* Align radio buttons and content inside the grid */
+.grid-item input[type="radio"] {
+    margin-right: 10px;
+}
+
+.grid-item p {
+    margin-left: 10px; /* Space between avatar and text */
+    font-size: 1rem;
+    white-space: nowrap; /* Prevents text from wrapping */
 }

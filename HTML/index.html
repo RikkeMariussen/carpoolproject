@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html lang="da">
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>ForsideCarpool</title>
     <link rel="stylesheet" href="../CSS/style.css"/>
 </head>
+
 <body>
+
 <header>
     <div class="banner">
-<img src="../Images/carpool_topbanner.jpg"/>
+        <img src="../Images/carpool_topbanner.jpg"/>
     </div>
 </header>
 
 <form action="side2.html">
-    <div class="frontpage">
-        <label for="email"></label><br>
-        <input type=email id="email" name="email" required placeholder="E-mailadresse"><br>
-        <label for="text"></label><br>
-        <input type=password id="text" name="Adgangskode" required placeholder="Adgangskode"><br>
-        <!-- type=text i input til adgangskode er ændret til type=password -->
-        <br><br>
+    <div class="main-box">
+        <p>Skriv din Email adresse:</p>
+        <label for="email"></label>
+        <input type=email id="email" name="email" required placeholder="E-mailadresse">
+        <p>Og dit Password:</p>
+        <label for="text"></label>
+        <input type=password id="text" name="Adgangskode" required placeholder="Adgangskode">
 
-        <button type="submit">Login</button>
+        <div class="button-container">
+            <button type="submit">Login</button>
         </div>
+    </div>
 </form>
-
 </body>
 </html>
