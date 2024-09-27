@@ -15,7 +15,7 @@
 </header>
 
 
-<form action="side4.html">
+<form id="myForm" action="side4.html">
     <div class="main-box">
         <div class="sub-box">
             <select name="start" id="start" required>
@@ -47,23 +47,29 @@
 
         <div class="sub-box">
             <label for="date"></label>
-            <input type=date id="date" name="date" required>
+            <input type="date" id="date" name="date" required>
 
             <label for="time"></label>
-            <input type=time id="time" name="time" required>
+            <input type="time" id="time" name="time" required>
         </div>
 
         <div class="button-container">
-            <form action="side2.html">
-                <button type="submit">Tilbage</button>
-            </form>
-            <form action="side4.html">
-                <button type="submit">Næste</button>
-            </form>
-        </div>
+            <!-- Tilbage Button, doesn't validate form -->
+            <button type="button" onclick="goBack()">Tilbage</button>
 
+            <!-- Næste Button, requires validation -->
+            <button type="submit">Næste</button>
+        </div>
     </div>
 </form>
+
+<script>
+    function goBack() {
+        // Redirect to the previous page without validation
+        window.location.href = 'side2.html';
+    }
+</script>
+
 
 
 </body>

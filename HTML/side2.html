@@ -16,63 +16,78 @@
 
 <form id="dynamicForm">
     <div class="main-box">
+        <!-- Radio group for Chauffeur or Passenger -->
         <div class="radio-group sub-box">
             <label>
-                <input type="radio" name="type" required value="chauffeur">Chauffør
+                <input type="radio" name="type" value="chauffeur" required> Chauffør
             </label>
             <label>
-                <input type="radio" name="type" value="passenger">Passager<br/>
+                <input type="radio" name="type" value="passenger" required> Passager
             </label>
         </div>
 
+        <!-- Radio group for Oneway or Return trip -->
         <div class="radio-group sub-box">
             <label>
-                <input type="radio" name="travel" required value="oneway">Enkelt tur
+                <input type="radio" name="travel" value="oneway" required> Enkelt tur
             </label>
             <label>
-                <input type="radio" name="travel" required value="return">Tur/Retur<br/>
+                <input type="radio" name="travel" value="return" required> Tur/Retur
             </label>
         </div>
 
-
+        <!-- Button container -->
         <div class="button-container">
-            <form action="index.html">
-                <button type="submit">Tilbage</button>
-            </form>
-            <form action="side3.html">
-                <button type="submit">Næste</button>
-            </form>
+            <!-- Tilbage button - no validation -->
+            <button type="button" onclick="goBack()">Tilbage</button>
+
+            <!-- Næste button - requires validation -->
+            <button type="submit" id="nesteButton">Næste</button>
         </div>
     </div>
 </form>
 
 <script>
-    document.getElementById('dynamicForm').addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent the default form submission behavior
+    // JavaScript function for the "Tilbage" button
+    function goBack() {
+        window.location.href = 'index.html';  // Redirect to index.html
+    }
 
-        // Get the selected radio values
-        const type = document.querySelector('input[name="type"]:checked').value;
-        const travel = document.querySelector('input[name="travel"]:checked').value;
+    // Handle form submission for "Næste" button
+    document.getElementById('dynamicForm').addEventListener('submit', function(event) {
+        // Prevent the default form submission behavior
+        event.preventDefault();
 
-        // Logic to determine which page to go to
+        // Get the selected values from radio buttons
+        const type = document.querySelector('input[name="type"]:checked');
+        const travel = document.querySelector('input[name="travel"]:checked');
+
+        // Ensure both radio groups are selected
+        if (!type || !travel) {
+            alert('Please select both Chauffeur/Passager and Enkelt Tur/Tur/Retur.');
+            return;  // Stop form submission if validation fails
+        }
+
+        // Logic to determine which page to go to based on selection
         let actionURL = '';
-        if (type === 'chauffeur' && travel === 'oneway') {
+        if (type.value === 'chauffeur' && travel.value === 'oneway') {
             actionURL = 'chauffeur_oneway.html';
-        } else if (type === 'chauffeur' && travel === 'return') {
+        } else if (type.value === 'chauffeur' && travel.value === 'return') {
             actionURL = 'chauffeur_return.html';
-        } else if (type === 'passenger' && travel === 'oneway') {
+        } else if (type.value === 'passenger' && travel.value === 'oneway') {
             actionURL = 'passenger_oneway.html';
-        } else if (type === 'passenger' && travel === 'return') {
+        } else if (type.value === 'passenger' && travel.value === 'return') {
             actionURL = 'side3.html';
         }
 
-        // Set the form's action attribute to the determined URL
+        // Set the form's action to the correct URL
         this.action = actionURL;
 
         // Now submit the form
         this.submit();
     });
 </script>
+
 
 </body>
 </html>
