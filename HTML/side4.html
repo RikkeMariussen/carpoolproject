@@ -14,16 +14,16 @@
 </header>
 
 <div class="choose">
-    <form action="side5.html">
+    <form id="dynamicForm">
 
         <!-- Date and Time Inputs -->
         <div class="main-box">
             <div class="sub-box">
                 <label for="date"></label>
-                <input type="date" id="date" name="date" required>
+                <input type="date" id="date" name="date">
 
                 <label for="time"></label>
-                <input type="time" id="time" name="time" required>
+                <input type="time" id="time" name="time">
             </div>
 
             <!-- Group "Frem" and "Tilbage" styled like sub-box -->
@@ -32,13 +32,13 @@
                 <div class="sub-box group-box">
                     <h3>Frem</h3>
                     <div class="grid-item">
-                        <input type="radio" name="from" required value="mikkel">
+                        <input type="radio" name="from" value="mikkel">
                         <img src="../Images/unknownAvatar.png" alt="Mikkel Avatar" class="avatar">
                         <p><strong>Mikkel</strong><br>By<br>Kl: 8:00</p>
                     </div>
 
                     <div class="grid-item">
-                        <input type="radio" name="from" required value="rolf">
+                        <input type="radio" name="from" value="rolf">
                         <img src="../Images/unknownAvatar.png" alt="Rolf Avatar" class="avatar">
                         <p><strong>Rolf</strong><br>By<br>Kl: 8:00</p>
                     </div>
@@ -48,13 +48,13 @@
                 <div class="sub-box group-box">
                     <h3>Tilbage</h3>
                     <div class="grid-item">
-                        <input type="radio" name="back" required value="casper">
+                        <input type="radio" name="back" value="casper">
                         <img src="../Images/unknownAvatar.png" alt="Casper Avatar" class="avatar">
                         <p><strong>Casper</strong><br>By<br>Kl: 14:00</p>
                     </div>
 
                     <div class="grid-item">
-                        <input type="radio" name="back" required value="franck">
+                        <input type="radio" name="back" value="franck">
                         <img src="../Images/unknownAvatar.png" alt="Franck Avatar" class="avatar">
                         <p><strong>Franck</strong><br>By<br>Kl: 14:00</p>
                     </div>
@@ -63,17 +63,47 @@
 
             <!-- Button container for navigation -->
             <div class="button-container">
-                <form action="side5.html">
-                    <button type="submit">Næste</button>
-                </form>
-                <form action="side3.html">
-                    <button type="submit">Tilbage</button>
-                </form>
+                <!-- Tilbage button (no validation) -->
+                <button type="button" id="tilbageButton">Tilbage</button>
+
+                <!-- Næste button (with validation) -->
+                <button type="button" id="nesteButton">Næste</button>
             </div>
 
         </div>
     </form>
 </div>
+
+<script type="application/javascript">
+    // Function to validate form fields
+    function validateForm() {
+        const dateSelected = document.getElementById("date").value;
+        const timeSelected = document.getElementById("time").value;
+        const fromSelected = document.querySelector('input[name="from"]:checked');
+        const backSelected = document.querySelector('input[name="back"]:checked');
+
+        if (!dateSelected || !timeSelected || !fromSelected || !backSelected) {
+            alert("Please fill in all required fields.");
+            return false; // Stop submission
+        }
+        return true; // Proceed with submission
+    }
+
+    // Handle the Næste button click with validation
+    document.getElementById("nesteButton").addEventListener("click", function() {
+        const form = document.getElementById("dynamicForm");
+        if (validateForm()) {
+            form.action = "side5.html";
+            form.submit(); // Submit if validation passes
+        }
+    });
+
+    // Handle the Tilbage button click (no validation)
+    document.getElementById("tilbageButton").addEventListener("click", function() {
+        window.location.href = "side3.html"; // Redirect to previous page
+    });
+</script>
+
 
 <script type="application/javascript">
     const params = new URLSearchParams(window.location.search);
@@ -90,6 +120,84 @@
         }
     }
 </script>
+
+<!-- Styling for error messages -->
+<style>
+    .error-message {
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+        display: none; /* Hidden by default */
+    }
+</style>
+
+<script type="application/javascript">
+    const params = new URLSearchParams(window.location.search);
+
+    // Populate fields if URL parameters exist
+    for (const p of params) {
+        const key = p[0];
+        const value = p[1];
+
+        if (key === "date") {
+            document.getElementById("date").value = value;
+        } else if (key === "time") {
+            document.getElementById("time").value = value;
+        }
+    }
+
+    // Function to validate if radio buttons and inputs are selected
+    document.getElementById("nesteButton").addEventListener("click", function() {
+        let valid = true;
+
+        // Clear previous error messages
+        document.getElementById("dateError").style.display = "none";
+        document.getElementById("timeError").style.display = "none";
+        document.getElementById("fromError").style.display = "none";
+        document.getElementById("backError").style.display = "none";
+
+        const fromSelected = document.querySelector('input[name="from"]:checked');
+        const backSelected = document.querySelector('input[name="back"]:checked');
+        const dateSelected = document.getElementById("date").value;
+        const timeSelected = document.getElementById("time").value;
+
+        // Check if the 'from' option is selected
+        if (!fromSelected) {
+            document.getElementById("fromError").textContent = "Please select a 'Frem' option.";
+            document.getElementById("fromError").style.display = "block";
+            valid = false;
+        }
+
+        // Check if the 'back' option is selected
+        if (!backSelected) {
+            document.getElementById("backError").textContent = "Please select a 'Tilbage' option.";
+            document.getElementById("backError").style.display = "block";
+            valid = false;
+        }
+
+        // Check if date is selected
+        if (!dateSelected) {
+            document.getElementById("dateError").textContent = "Please select a date.";
+            document.getElementById("dateError").style.display = "block";
+            valid = false;
+        }
+
+        // Check if time is selected
+        if (!timeSelected) {
+            document.getElementById("timeError").textContent = "Please select a time.";
+            document.getElementById("timeError").style.display = "block";
+            valid = false;
+        }
+
+        // If all validations pass, submit the form
+        if (valid) {
+            document.getElementById("dynamicForm").submit();
+        }
+    });
+</script>
+
+
+
 
 </body>
 </html>
